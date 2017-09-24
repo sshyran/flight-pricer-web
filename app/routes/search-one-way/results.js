@@ -12,7 +12,8 @@ export default Ember.Route.extend({
       query: {
         date: date,
         departureAirport: departureAirport,
-        arrivalAirport: arrivalAirport
+        arrivalAirport: arrivalAirport,
+
       }
     }
 
