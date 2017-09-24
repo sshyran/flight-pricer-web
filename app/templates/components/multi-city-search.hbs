@@ -1,0 +1,24 @@
+{{#each slices as |slice index|}}
+  {{#one-way-search
+    departureAirport=slice.DepartureAirport
+    arrivalAirport=slice.ArrivalAirport
+    departureDate=slice.DepartureDate
+    numberOfAdult=slice.NumberOfAdult
+    travelClass=slice.TravelClass
+    initialTravelClass=slice.InitialTravelClass
+    minDate=slice.MinDate}}
+    <div class="form-group col-1">
+      <br/>
+      <button class="btn btn-danger btn-sm" disabled={{onlyOneSlice}} {{action "deleteSlice" index}}><i
+        class="fa fa-minus"></i></button>
+    </div>
+
+
+  {{/one-way-search}}
+
+
+{{/each}}
+
+<button {{action "addSlice"}} class="btn btn-sm btn-info"><i class="fa fa-plus"></i> </button>
+
+{{yield}}

@@ -1,0 +1,24 @@
+@import "ember-cli-bootstrap-4/bootstrap";
+
+body {
+  background-color: #fafafa;
+  padding-top: 4rem;
+}
+
+.content {
+  padding: 3rem 1.5rem;
+}
+
+.search-flights-block {
+  background-color: #FFF;
+  padding: 1rem;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+$fa-font-path: "/fonts";
+@import "node_modules/components-font-awesome/scss/font-awesome.scss";
