@@ -15,6 +15,18 @@ export default Ember.Component.extend({
     {value: "PREMIUM", text: 'Premium'},
     {value: "BUSINESS", text: 'Business'},
     {value: "FIRST", text: 'First'},
-  ]
+  ],
+
+  actions: {
+    search() {
+      this.get('onSearch')({
+        departureAirport: this.get('departureAirport'),
+        arrivalAirport: this.get('arrivalAirport'),
+        departureDate: this.get('departureDate'),
+        numberOfAdult: this.get('numberOfAdult'),
+        travelClass: this.get('travelClass')
+      });
+    }
+  }
 
 });

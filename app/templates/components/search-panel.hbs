@@ -17,10 +17,6 @@
     <div class="tab-content search-flights-block">
       <div class="tab-pane active">
         <form>
-          {{#if isOneWay}}
-            {{one-way-search}}
-          {{/if}}
-
           {{#if isRoundTrip}}
             {{round-trip-search}}
           {{/if}}
@@ -28,6 +24,7 @@
           {{#if isMultiCity}}
             {{multi-city-search}}
           {{/if}}
+
           <div class="row">
             <div class="col-10"></div>
             <div class="col-2 align-self-end">

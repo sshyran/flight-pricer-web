@@ -20,8 +20,11 @@ export default Ember.Component.extend({
 
     multiCitySearch() {
       this.set('searchMode', 'multiCity')
-    }
+    },
 
+    onSearch(params) {
+      this.get('onSearch')(params);
+    }
 
   }
 

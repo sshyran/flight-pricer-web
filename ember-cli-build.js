@@ -27,6 +27,5 @@ module.exports = function (defaults) {
   app.import('node_modules/components-font-awesome/fonts/fontawesome-webfont.woff2', {destDir: 'fonts'});
   app.import('node_modules/components-font-awesome/fonts/FontAwesome.otf', {destDir: 'fonts'});
 
-
   return app.toTree();
 };

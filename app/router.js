@@ -8,7 +8,9 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('search-round-trip', {path: '/round-trip'});
-  this.route('search-one-way', {path: '/one-way'});
+  this.route('search-one-way', {path: '/one-way'}, function() {
+    this.route('results', {path: '/:departure/:arrival/:departureDate'});
+  });
   this.route('search-multi-city', {path: '/multi-city'});
 });
 
