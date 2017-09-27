@@ -1,29 +1,30 @@
-<div class="row">
-  <div class="col">
-  </div>
-  <div class="col-md-10 align-self-center">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        {{#link-to "search-one-way" class="nav-link"}}One Way{{/link-to}}
-      </li>
-      <li class="nav-item">
-        {{#link-to "search-round-trip" class="nav-link"}}Round trip{{/link-to}}
-      </li>
-      <li class="nav-item">
-        {{#link-to "search-multi-city" class="nav-link"}}Multi City{{/link-to}}
-      </li>
-    </ul>
-
-    <div class="tab-content search-flights-block">
-      <div class="tab-pane active">
-        <form>
-          {{one-way-search onSearch=(action "search") }}
-        </form>
-      </div>
+<div class="container ">
+  <div class="row">
+    <div class="col">
     </div>
+    <div class="col-md-10 align-self-center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          {{#link-to "search-one-way" class="nav-link"}}One Way{{/link-to}}
+        </li>
+        <li class="nav-item">
+          {{#link-to "search-round-trip" class="nav-link"}}Round trip{{/link-to}}
+        </li>
+        <li class="nav-item">
+          {{#link-to "search-multi-city" class="nav-link"}}Multi City{{/link-to}}
+        </li>
+      </ul>
 
+      <div class="tab-content search-flights-block">
+        <div class="tab-pane active">
+          <form>
+            {{one-way-search onSearch=(action "search") }}
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="col"></div>
   </div>
-  <div class="col"></div>
 </div>
-
 {{outlet}}

@@ -8,7 +8,10 @@ export default DS.Model.extend({
   numberOfAdults: DS.attr('number'),
   cabin: DS.attr('string'),
 
-  solutions: DS.hasMany('solution')
+  solutions: DS.hasMany('solution'),
+
+
+  allAirlines: Ember.computed.mapBy('solutions', 'allAirlines')
 
 
 });

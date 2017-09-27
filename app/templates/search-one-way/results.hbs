@@ -1,2 +1,80 @@
-{{outlet}}
-{{model.query.departureAirport}}
+<div class="container-fluid">
+  <div class="results row ">
+
+    <div class="col-6 col-md-2">
+      <div class="filter-criteria">
+        <h6>Airline filters</h6>
+        <ul class="list-unstyled">
+          {{#each model.allAirlines as |airline|}}
+            <li>{{airline}}</li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="filter-criteria">
+        <h6>Time filters</h6>
+        <ul class="list-unstyled">
+          {{#each model.allAirlines as |airline|}}
+            <li>{{airline}}</li>
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-md-10">
+      {{#each model.solutions as |solution|}}
+        <div class="row solution">
+          {{#each solution.slices as |slice|}}
+            {{#each slice.segments as |segment|}}
+              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+                <ul class="list-unstyled">
+                  <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format segment.originLocalDepartureTime
+                                                                                     'DD/MM/YYYY'}}</li>
+                  <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
+                    segment.originLocalDepartureTime 'HH:mm'}}</li>
+                </ul>
+
+                <h6>{{segment.originAirport}}</h6>
+              </div>
+              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+                <strong><i class="fa fa-plane"></i> {{segment.carrierIATA}} {{segment.number}}<br/></strong>
+                <ul class="list-unstyled">
+                  {{#each segment.legs as |leg|}}
+                    <li class="small text-muted"> {{leg.origin}} - {{leg.destination}} ({{moment-duration leg.duration
+                                                                                                          'minutes'}})
+                    </li>
+                  {{/each}}
+                </ul>
+
+              </div>
+              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+                <ul class="list-unstyled">
+                  <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+                    segment.destinationLocalArrivalTime
+                    'DD/MM/YYYY'}}</li>
+                  <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
+                    segment.destinationLocalArrivalTime 'HH:mm'}}</li>
+                </ul>
+                <h6>{{segment.destinationAirport}}</h6>
+                <p class="small text-muted"></p>
+              </div>
+              <div class="col-3">
+                <h1 class="text-success text-right">{{solution.price}}</h1>
+                <h5 class="text-warning text-right">{{solution.price}}</h5>
+                <h6 class="text-danger text-right">{{solution.price}}</h6>
+
+              </div>
+            {{/each}}
+          {{/each}}
+
+        </div>
+
+      {{/each}}
+    </div>
+  </div>
+
+  {{outlet}}
+</div>
+
+

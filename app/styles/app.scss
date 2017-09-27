@@ -22,3 +22,20 @@ body {
 
 $fa-font-path: "/fonts";
 @import "node_modules/components-font-awesome/scss/font-awesome.scss";
+
+.results {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.solution {
+  padding: 1rem;
+  background-color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.filter-criteria {
+  padding: 5px 5px 0 5px;
+  background-color: #fff;
+}
