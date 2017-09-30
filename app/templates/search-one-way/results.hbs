@@ -3,6 +3,12 @@
 
     <div class="col-6 col-md-2">
       <div class="filter-criteria">
+        <h6>Connection filter</h6>
+        Max Number of connection:
+        {{input type="number" value=maxConnection}}
+      </div>
+
+      <div class="filter-criteria">
         <h6>Airline filters</h6>
         <ul class="list-unstyled">
           {{#each model.uniqueAirlines as |airline|}}
@@ -46,7 +52,9 @@
                 <ul class="list-unstyled">
                   {{#each segment.legs as |leg|}}
                     <li class="small text-muted"> {{leg.origin}} - {{leg.destination}} ({{moment-duration leg.duration
-                                                                                                          'minutes'}})
+                                                                                                          'minutes'}}
+                      )<br/>
+                      {{leg.operationDisclosure}}
                     </li>
                   {{/each}}
                 </ul>
@@ -69,9 +77,15 @@
             {{/each}}
           </div>
           <div class="col-3">
-            <h1 class="text-success text-right">{{solution.currency}} {{solution.amount}}</h1>
-            <h5 class="text-warning text-right">{{solution.price}}</h5>
-            <h6 class="text-danger text-right">{{solution.price}}</h6>
+            {{#each solution.prices as |price index|}}
+              {{#if (eq index 0)}}
+                <h6 class="text-success text-right">{{price.currency}} {{price.amount}} <span
+                  class="small">({{price.country}})</span></h6>
+              {{else}}
+                <h6 class="text-warning text-right">{{price.currency}} {{price.amount}}<span
+                  class="small">({{price.country}})</span></h6>
+              {{/if}}
+            {{/each}}
 
           </div>
 

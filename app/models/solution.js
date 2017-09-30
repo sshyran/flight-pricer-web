@@ -2,7 +2,7 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  price: DS.attr('string'),
+  prices: DS.hasMany('price'),
   refundable: DS.attr('boolean'),
   slices: DS.hasMany('slice'),
 
@@ -18,12 +18,8 @@ export default DS.Model.extend({
     return airlines;
   }),
 
-  currency: Ember.computed('price', function () {
-    return this.get('price').substr(0, 3);
-  }),
 
-  amount: Ember.computed('price', function () {
-    return parseFloat(this.get('price').substr(3));
-  }),
+  amounts: Ember.computed.mapBy('prices', 'amount'),
+  smallestAmount: Ember.computed.min('amounts'),
 })
 ;

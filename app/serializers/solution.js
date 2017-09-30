@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 
-export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin,{
+export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
-    slices: {embedded: 'always'}
+    slices: {embedded: 'always'},
+    prices: {embedded: 'always'}
   }
 });
