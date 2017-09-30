@@ -5,7 +5,7 @@
       <div class="filter-criteria">
         <h6>Airline filters</h6>
         <ul class="list-unstyled">
-          {{#each model.allAirlines as |airline|}}
+          {{#each model.uniqueAirlines as |airline|}}
             <li>{{airline}}</li>
           {{/each}}
         </ul>
@@ -14,7 +14,7 @@
       <div class="filter-criteria">
         <h6>Time filters</h6>
         <ul class="list-unstyled">
-          {{#each model.allAirlines as |airline|}}
+          {{#each model.uniqueAirlines as |airline|}}
             <li>{{airline}}</li>
           {{/each}}
         </ul>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="col-12 col-md-10">
-      {{#each model.solutions as |solution|}}
+      {{#each sortedSolutions as |solution|}}
         <div class="row solution">
           {{#each solution.slices as |slice|}}
             {{#each slice.segments as |segment|}}
@@ -60,7 +60,7 @@
                 <p class="small text-muted"></p>
               </div>
               <div class="col-3">
-                <h1 class="text-success text-right">{{solution.price}}</h1>
+                <h1 class="text-success text-right">{{solution.currency}} {{solution.amount}}</h1>
                 <h5 class="text-warning text-right">{{solution.price}}</h5>
                 <h6 class="text-danger text-right">{{solution.price}}</h6>
 

@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
 
@@ -11,7 +12,19 @@ export default DS.Model.extend({
   solutions: DS.hasMany('solution'),
 
 
-  allAirlines: Ember.computed.mapBy('solutions', 'allAirlines')
+  allAirlines: Ember.computed.mapBy('solutions', 'uniqueAirlines'),
+  uniqueAirlines: Ember.computed('allAirlines.[]', function () {
+    let uniqueAirlines = [];
+    this.get('allAirlines').forEach(airlines => {
+      airlines.forEach(airline => {
+        if (!uniqueAirlines.includes(airline)) {
+          uniqueAirlines.pushObject(airline);
+        }
+      });
+    });
+
+    return uniqueAirlines.sort();
+  }),
 
 
 });
