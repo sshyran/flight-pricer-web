@@ -25,9 +25,9 @@
     <div class="col-12 col-md-10">
       {{#each sortedSolutions as |solution|}}
         <div class="row solution">
-          {{#each solution.slices as |slice|}}
-            {{#each slice.segments as |segment|}}
-              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+            {{#each solution.slices as |slice|}}
+              {{#each slice.segments as |segment|}}
                 <ul class="list-unstyled">
                   <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format segment.originLocalDepartureTime
                                                                                      'DD/MM/YYYY'}}</li>
@@ -36,8 +36,12 @@
                 </ul>
 
                 <h6>{{segment.originAirport}}</h6>
-              </div>
-              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+              {{/each}}
+            {{/each}}
+          </div>
+          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+            {{#each solution.slices as |slice|}}
+              {{#each slice.segments as |segment|}}
                 <strong><i class="fa fa-plane"></i> {{segment.carrierIATA}} {{segment.number}}<br/></strong>
                 <ul class="list-unstyled">
                   {{#each segment.legs as |leg|}}
@@ -46,9 +50,12 @@
                     </li>
                   {{/each}}
                 </ul>
-
-              </div>
-              <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+              {{/each}}
+            {{/each}}
+          </div>
+          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+            {{#each solution.slices as |slice|}}
+              {{#each slice.segments as |segment|}}
                 <ul class="list-unstyled">
                   <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
                     segment.destinationLocalArrivalTime
@@ -58,15 +65,16 @@
                 </ul>
                 <h6>{{segment.destinationAirport}}</h6>
                 <p class="small text-muted"></p>
-              </div>
-              <div class="col-3">
-                <h1 class="text-success text-right">{{solution.currency}} {{solution.amount}}</h1>
-                <h5 class="text-warning text-right">{{solution.price}}</h5>
-                <h6 class="text-danger text-right">{{solution.price}}</h6>
-
-              </div>
+              {{/each}}
             {{/each}}
-          {{/each}}
+          </div>
+          <div class="col-3">
+            <h1 class="text-success text-right">{{solution.currency}} {{solution.amount}}</h1>
+            <h5 class="text-warning text-right">{{solution.price}}</h5>
+            <h6 class="text-danger text-right">{{solution.price}}</h6>
+
+          </div>
+
 
         </div>
 
