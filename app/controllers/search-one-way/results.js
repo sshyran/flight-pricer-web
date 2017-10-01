@@ -12,7 +12,6 @@ export default Ember.Controller.extend({
   filteredSolutions: Ember.computed('model.solutions', 'model.solutions.@each.segments', 'maxConnection', function () {
     let filteredSolutions = [];
     let maxConnection = parseInt(this.get('maxConnection')) + 1;
-    console.log(maxConnection);
     let originalSolutions = this.get('model.solutions');
     if (maxConnection !== undefined) {
       originalSolutions.forEach(solution => {
