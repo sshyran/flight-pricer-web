@@ -4,7 +4,7 @@
     <div class="col-6 col-md-2">
       <div class="filter-criteria">
         <h6>Connection filter</h6>
-        Max Number of connection:
+        Max Number of Stop:
         {{input type="number" value=maxConnection}}
       </div>
 
@@ -31,48 +31,50 @@
     <div class="col-12 col-md-10">
       {{#each sortedSolutions as |solution|}}
         <div class="row solution">
-          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
+          <div class="col-9">
             {{#each solution.slices as |slice|}}
               {{#each slice.segments as |segment|}}
-                <ul class="list-unstyled">
-                  <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format segment.originLocalDepartureTime
-                                                                                     'DD/MM/YYYY'}}</li>
-                  <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
-                    segment.originLocalDepartureTime 'HH:mm'}}</li>
-                </ul>
+                <div class="row">
+                  <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+                    <ul class="list-unstyled">
+                      <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+                        segment.originLocalDepartureTime
+                        'DD/MM/YYYY'}}</li>
+                      <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
+                        segment.originLocalDepartureTime 'HH:mm'}}</li>
+                    </ul>
 
-                <h6>{{segment.originAirport}}</h6>
-              {{/each}}
-            {{/each}}
-          </div>
-          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
-            {{#each solution.slices as |slice|}}
-              {{#each slice.segments as |segment|}}
-                <strong><i class="fa fa-plane"></i> {{segment.carrierIATA}} {{segment.number}}<br/></strong>
-                <ul class="list-unstyled">
-                  {{#each segment.legs as |leg|}}
-                    <li class="small text-muted"> {{leg.origin}} - {{leg.destination}} ({{moment-duration leg.duration
-                                                                                                          'minutes'}}
-                      )<br/>
-                      {{leg.operationDisclosure}}
-                    </li>
-                  {{/each}}
-                </ul>
-              {{/each}}
-            {{/each}}
-          </div>
-          <div class="col-3 border border-left-0 border-top-0 border-bottom-0">
-            {{#each solution.slices as |slice|}}
-              {{#each slice.segments as |segment|}}
-                <ul class="list-unstyled">
-                  <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
-                    segment.destinationLocalArrivalTime
-                    'DD/MM/YYYY'}}</li>
-                  <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
-                    segment.destinationLocalArrivalTime 'HH:mm'}}</li>
-                </ul>
-                <h6>{{segment.destinationAirport}}</h6>
-                <p class="small text-muted"></p>
+                    <h6>{{segment.originAirport}}</h6>
+
+                  </div>
+                  <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+
+                    <strong><i class="fa fa-plane"></i> {{segment.carrierIATA}} {{segment.number}}<br/></strong>
+                    <ul class="list-unstyled">
+                      {{#each segment.legs as |leg|}}
+                        <li class="small text-muted"> {{leg.origin}} - {{leg.destination}} ({{moment-duration
+                          leg.duration
+                          'minutes'}}
+                          )<br/>
+                          {{leg.operationDisclosure}}
+                        </li>
+                      {{/each}}
+                    </ul>
+
+                  </div>
+                  <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+
+                    <ul class="list-unstyled">
+                      <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+                        segment.destinationLocalArrivalTime
+                        'DD/MM/YYYY'}}</li>
+                      <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
+                        segment.destinationLocalArrivalTime 'HH:mm'}}</li>
+                    </ul>
+                    <h6>{{segment.destinationAirport}}</h6>
+                    <p class="small text-muted"></p>
+                  </div>
+                </div>
               {{/each}}
             {{/each}}
           </div>
