@@ -2,9 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model(params) {
-    return this.get('store').queryRecord('one-way-flight-search', params);
+  modelHookCalled: false,
 
+  model(params) {
+    this.set('modelHookCalled', true);
+    return this.get('store').queryRecord('one-way-flight-search', params);
+  },
+
+  setupController(controller, model) {
+    if(!this.get('modelHookCalled')) {
+      this.refresh();
+    }
+    controller.set('model', model);
+    this.set('modelHookCalled', false);
   }
 
 });
