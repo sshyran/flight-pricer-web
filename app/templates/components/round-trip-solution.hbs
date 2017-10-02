@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a {{action 'showSummary'}} href="#" class="nav-link {{if (eq 'summary' activeTab) 'active' ''}}">Summary</a>
+      </li>
+      <li class="nav-item">
+        <a {{action 'showOutward'}} href="#" class="nav-link {{if (eq 'outward' activeTab) 'active' ''}}">Outward
+          trip</a>
+      </li>
+      <li class="nav-item">
+        <a {{action 'showReturn'}} href="#" class="nav-link {{if (eq 'return' activeTab) 'active' ''}}">Return trip</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      {{#if (eq 'summary' activeTab)}}
+        {{round-trip-summary solution=solution class="row solution"}}
+      {{/if}}
+      {{#if (eq 'outward' activeTab)}}
+        TODO {{outwardSlice.segments.length}}
+      {{/if}}
+
+      {{#if (eq 'return' activeTab)}}
+        TODO {{returnSlice.segments.length}}
+      {{/if}}
+
+    </div>
+
+  </div>
+</div>

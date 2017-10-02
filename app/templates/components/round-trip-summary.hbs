@@ -1,0 +1,87 @@
+<div class="col-9">
+  <div class="row summary-slice">
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+        outwardDepartureLocalTime
+        'DD/MM/YYYY'}}&nbsp; {{moment-format
+        outwardDepartureLocalTime 'HH:mm'}}</h4>
+    </div>
+
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      {{#if (eq 0 outwardConnectionCount)}}
+        <h6>Direct flight</h6>
+      {{else}}
+        <h6>{{outwardConnectionCount}} stop <span class="small text-muted">
+          ({{outwardConnectingAirport}})
+        </span></h6>
+      {{/if}}
+      <span class="small text-muted">{{outwardFlights}}</span>
+
+    </div>
+
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+        outwardArrivalLocalTime
+        'DD/MM/YYYY'}}&nbsp; {{moment-format
+        outwardArrivalLocalTime 'HH:mm'}}</h4>
+
+    </div>
+  </div>
+
+  <div class="row summary-slice">
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+        returnArrivalLocalTime
+        'DD/MM/YYYY'}}&nbsp; {{moment-format
+        returnArrivalLocalTime 'HH:mm'}}</h4>
+    </div>
+
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      {{#if (eq 0 returnConnectionCount)}}
+        <h6>Direct flight</h6>
+      {{else}}
+        <h6>{{returnConnectionCount}} stop <span class="small text-muted">({{returnConnectingAirport}})</span></h6>
+      {{/if}}
+      <span class="small text-muted">{{returnFlights}}</span>
+
+    </div>
+
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h4 class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+        returnDepartureLocalTime
+        'DD/MM/YYYY'}}&nbsp; {{moment-format
+        returnDepartureLocalTime 'HH:mm'}}</h4>
+
+    </div>
+
+  </div>
+
+  <div class="row summary-slice">
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h6>{{departureAirport}}</h6>
+    </div>
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      &nbsp;
+    </div>
+    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+      <h6>{{arrivalAirport}}</h6>
+      <p class="small text-muted"></p>
+
+    </div>
+
+
+  </div>
+
+</div>
+<div class="col-3">
+  {{#each solution.prices as |price index|}}
+    {{#if (eq index 0)}}
+      <h6 class="text-success text-right">{{price.currency}} {{price.amount}} <span
+        class="small">({{price.country}})</span></h6>
+    {{else}}
+      <h6 class="text-warning text-right">{{price.currency}} {{price.amount}}<span
+        class="small">({{price.country}})</span></h6>
+    {{/if}}
+  {{/each}}
+
+</div>

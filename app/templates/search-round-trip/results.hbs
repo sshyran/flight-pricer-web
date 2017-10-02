@@ -1,1 +1,39 @@
-{{outlet}}
+<div class="container-fluid">
+  <div class="results row ">
+
+    <div class="col-6 col-md-2">
+      <div class="filter-criteria">
+        <h6>Connection filter</h6>
+        Max Number of Stop:
+        {{input type="number" value=maxConnection}}
+      </div>
+
+      <div class="filter-criteria">
+        <h6>Airline filters</h6>
+        <ul class="list-unstyled">
+          {{#each model.uniqueAirlines as |airline|}}
+            <li>{{airline}}</li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="filter-criteria">
+        <h6>Time filters</h6>
+        <ul class="list-unstyled">
+          {{#each model.uniqueAirlines as |airline|}}
+            <li>{{airline}}</li>
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-md-10">
+      {{#each sortedSolutions as |solution|}}
+        {{round-trip-solution solution=solution}}
+      {{/each}}
+    </div>
+  </div>
+
+  {{outlet}}
+</div>

@@ -24,7 +24,7 @@ export default Ember.Component.extend({
         arrivalAirport: this.get('outWardArrivalAirport'),
         departureDate: this.get('outWardDepartureDate'),
         returnDate: this.get('returnDepartureDate'),
-        numberOfAdult: this.get('numberOfAdult'),
+        numberOfAdult: this.get('outWardNumberOfAdult'),
         travelClass: this.get('travelClass')
       });
     }

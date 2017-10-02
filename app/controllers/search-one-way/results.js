@@ -13,15 +13,14 @@ export default Ember.Controller.extend({
     let filteredSolutions = [];
     let maxConnection = parseInt(this.get('maxConnection')) + 1;
     let originalSolutions = this.get('model.solutions');
-    if (maxConnection !== undefined) {
-      originalSolutions.forEach(solution => {
-        solution.get('slices').forEach(slice => {
-          if (slice.get('segments.length') <= maxConnection) {
-            filteredSolutions.pushObject(solution)
-          }
-        });
-      })
-    }
+    originalSolutions.forEach(solution => {
+      solution.get('slices').forEach(slice => {
+        if (slice.get('segments.length') <= maxConnection) {
+          filteredSolutions.pushObject(solution)
+        }
+      });
+    })
+
     return filteredSolutions;
   }),
 
