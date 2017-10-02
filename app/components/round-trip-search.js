@@ -12,10 +12,23 @@ export default Ember.Component.extend({
   returnDepartureAirport: Ember.computed.alias('outWardArrivalAirport'),
   returnArrivalAirport: Ember.computed.alias('outWardDepartureAirport'),
   returnDepartureDate: new Date(),
-  returnTravelClass: 'ECONOMY',
-  returnNumberOfAdult: 1,
-  returnInitialTravelClass: 'ECONOMY',
-  returnMinDate: Ember.computed.alias('outWardDepartureDate')
+  returnTravelClass: Ember.computed.alias('outWardTravelClass'),
+  returnNumberOfAdult: Ember.computed.alias('outWardNumberOfAdult'),
+  returnInitialTravelClass: Ember.computed.alias('outWardInitialTravelClass'),
+  returnMinDate: Ember.computed.alias('outWardDepartureDate'),
+
+  actions: {
+    search() {
+      this.get('onSearch')({
+        departureAirport: this.get('outWardDepartureAirport'),
+        arrivalAirport: this.get('outWardArrivalAirport'),
+        departureDate: this.get('outWardDepartureDate'),
+        returnDate: this.get('returnDepartureDate'),
+        numberOfAdult: this.get('numberOfAdult'),
+        travelClass: this.get('travelClass')
+      });
+    }
+  }
 
 
 });

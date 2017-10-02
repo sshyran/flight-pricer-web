@@ -10,13 +10,6 @@ export default Ember.Component.extend({
   initialTravelClass: "ECONOMY",
   minDate: new Date(),
 
-  travelClasses: [
-    {value: "ECONOMY", text: 'Economy'},
-    {value: "PREMIUM", text: 'Premium'},
-    {value: "BUSINESS", text: 'Business'},
-    {value: "FIRST", text: 'First'},
-  ],
-
   actions: {
     search() {
       this.get('onSearch')({
