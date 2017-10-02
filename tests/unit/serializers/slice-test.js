@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('slice', 'Unit | Serializer | slice', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:slice']
+  needs: ['serializer:slice','model:segment']
 });
 
 // Replace this with your real tests.
