@@ -1,4 +1,24 @@
 <div class="container ">
-  {{search-panel searchMode="multiCity"}}
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-md-10 align-self-center">
+      {{utils/search-panel-tabs}}
+
+      <div class="tab-content search-flights-block">
+        <div class="tab-pane active">
+          Coming soon...
+        </div>
+      </div>
+
+    </div>
+    <div class="col"></div>
+  </div>
 </div>
+{{outlet}}
+
+
+<!--<div class="container ">-->
+{{!--{{search-panel searchMode="multiCity"}--}}
+<!--</div>-->
 {{outlet}}
