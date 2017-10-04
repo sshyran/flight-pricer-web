@@ -14,6 +14,7 @@ Router.map(function () {
     this.route('results', {path: '/:departure/:arrival/:departureDate'});
   });
   this.route('search-multi-city', {path: '/multi-city'});
+  this.route('about');
 });
 
 export default Router;

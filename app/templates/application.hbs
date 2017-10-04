@@ -4,6 +4,18 @@
           aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+
+      {{#link-to "search-round-trip" class="nav-item" tagNAme="li"}}
+        <a href class="nav-link">Search Flights</a>
+      {{/link-to}}
+
+      {{#link-to "about" class="nav-item" tagNAme="li"}}
+        <a href class="nav-link">About</a>
+      {{/link-to}}
+    </ul>
+  </div>
 
 </nav>
 
