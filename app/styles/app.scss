@@ -2,7 +2,7 @@
 
 body {
   background-color: #fafafa;
-  padding-top: 4rem;
+  min-height: 100vh;
 }
 
 .content {
@@ -42,4 +42,11 @@ $fa-font-path: "/fonts";
 
 .summary-slice {
   padding-bottom: 15px;
+}
+
+footer {
+  background-color: #fff;
+  color: #868e96 !important;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
