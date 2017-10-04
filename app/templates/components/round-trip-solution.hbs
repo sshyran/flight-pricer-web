@@ -17,11 +17,11 @@
         {{round-trip-summary solution=solution class="row solution"}}
       {{/if}}
       {{#if (eq 'outward' activeTab)}}
-        TODO {{outwardSlice.segments.length}}
+        {{one-way-solution slice=outwardSlice prices=solution.prices}}
       {{/if}}
 
       {{#if (eq 'return' activeTab)}}
-        TODO {{returnSlice.segments.length}}
+        {{one-way-solution slice=returnSlice prices=solution.prices}}
       {{/if}}
 
     </div>
