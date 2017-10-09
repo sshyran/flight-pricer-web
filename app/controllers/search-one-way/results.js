@@ -24,6 +24,20 @@ export default Ember.Controller.extend({
     return filteredSolutions;
   }),
 
+  allAirlines: Ember.computed.mapBy('filteredSolutions', 'uniqueAirlines'),
+  uniqueAirlines: Ember.computed('allAirlines.@each.uniqueAirlines', function () {
+    let uniqueAirlines = [];
+    this.get('allAirlines').forEach(airlines => {
+      airlines.forEach(airline => {
+        if (!uniqueAirlines.includes(airline)) {
+          uniqueAirlines.pushObject(airline);
+        }
+      });
+    });
+
+    return uniqueAirlines.sort();
+  }),
+
   sortedSolutions: Ember.computed.sort('filteredSolutions', 'sortParam')
 
 
