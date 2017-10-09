@@ -76,11 +76,13 @@
 <div class="col-3">
   {{#each solution.prices as |price index|}}
     {{#if (eq index 0)}}
-      <h6 class="text-success text-right">{{price.currency}} {{price.amount}} <span
-        class="small">({{price.country}})</span></h6>
+      <h6 class="text-success text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+        class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
+        {{price.country}})</span></h6>
     {{else}}
-      <h6 class="text-warning text-right">{{price.currency}} {{price.amount}}<span
-        class="small">({{price.country}})</span></h6>
+      <h6 class="text-warning text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+        class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
+        {{price.country}})</span></h6>
     {{/if}}
   {{/each}}
 

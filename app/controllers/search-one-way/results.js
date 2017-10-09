@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
           filteredSolutions.pushObject(solution)
         }
       });
-    })
+    });
 
     return filteredSolutions;
   }),

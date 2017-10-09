@@ -19,7 +19,7 @@ export default DS.Model.extend({
   }),
 
 
-  amounts: Ember.computed.mapBy('prices', 'amount'),
+  amounts: Ember.computed.mapBy('prices', 'requestCurrencyAmount'),
   smallestAmount: Ember.computed.min('amounts'),
 })
 ;
