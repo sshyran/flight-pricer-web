@@ -12,11 +12,17 @@ export default Ember.Controller.extend({
     let maxConnection = parseInt(this.get('maxConnection')) + 1;
     let originalSolutions = this.get('model.solutions');
     originalSolutions.forEach(solution => {
+      let allSliceMeetConnectionRequirement = true;
       solution.get('slices').forEach(slice => {
         if (slice.get('segments.length') <= maxConnection) {
-          filteredSolutions.pushObject(solution)
+          allSliceMeetConnectionRequirement = allSliceMeetConnectionRequirement && true;
+        } else {
+          allSliceMeetConnectionRequirement = allSliceMeetConnectionRequirement && false;
         }
       });
+      if (allSliceMeetConnectionRequirement) {
+        filteredSolutions.pushObject(solution)
+      }
     });
     return filteredSolutions;
   }),
