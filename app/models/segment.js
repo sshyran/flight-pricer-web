@@ -22,6 +22,8 @@ export default DS.Model.extend({
     return this.get('legs.lastObject.destination');
   }),
 
+  arrivalAirport: Ember.computed.alias('destinationAirport'),
+
   originLocalDepartureTime: Ember.computed('legs.[]', 'legs.@each.localDepartureTime', function () {
     return this.get('legs.firstObject.localDepartureTime');
   }),

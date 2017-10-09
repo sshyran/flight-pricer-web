@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   returnSlice: Ember.computed.alias('solution.slices.lastObject'),
 
   departureAirport: Ember.computed.alias('outwardSlice.segments.firstObject.originAirport'),
-  arrivalAirport: Ember.computed.alias('outwardSlice.segments.lastObject.originAirport'),
+  arrivalAirport: Ember.computed.alias('outwardSlice.segments.lastObject.arrivalAirport'),
 
   outwardDepartureLocalTime: Ember.computed.alias('outwardSlice.segments.firstObject.originLocalDepartureTime'),
   outwardArrivalLocalTime: Ember.computed.alias('outwardSlice.segments.lastObject.destinationLocalArrivalTime'),
