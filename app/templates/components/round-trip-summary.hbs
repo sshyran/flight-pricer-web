@@ -5,6 +5,7 @@
         outwardDepartureLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
         outwardDepartureLocalTime 'HH:mm'}}</h4>
+      <h6>{{departureAirport}}</h6>
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
@@ -24,16 +25,17 @@
         outwardArrivalLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
         outwardArrivalLocalTime 'HH:mm'}}</h4>
-
+      <h6>{{arrivalAirport}}</h6>
     </div>
   </div>
 
   <div class="row summary-slice">
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
       <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
-        returnArrivalLocalTime
+        returnDepartureLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        returnArrivalLocalTime 'HH:mm'}}</h4>
+        returnDepartureLocalTime 'HH:mm'}}</h4>
+      <h6>{{arrivalAirport}}</h6>
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
@@ -48,27 +50,11 @@
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
       <h4 class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
-        returnDepartureLocalTime
+        returnArrivalLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        returnDepartureLocalTime 'HH:mm'}}</h4>
-
-    </div>
-
-  </div>
-
-  <div class="row summary-slice">
-    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
+        returnArrivalLocalTime 'HH:mm'}}</h4>
       <h6>{{departureAirport}}</h6>
     </div>
-    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      &nbsp;
-    </div>
-    <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      <h6>{{arrivalAirport}}</h6>
-      <p class="small text-muted"></p>
-
-    </div>
-
 
   </div>
 
