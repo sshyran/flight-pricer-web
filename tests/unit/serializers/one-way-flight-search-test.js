@@ -1,4 +1,4 @@
-import {moduleForModel, test} from 'ember-qunit';
+import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('one-way-flight-search', 'Unit | Serializer | one way flight search', {
   // Specify the other units that are required for this test.

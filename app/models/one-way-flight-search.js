@@ -1,5 +1,6 @@
+import { computed } from '@ember/object';
+import { mapBy } from '@ember/object/computed';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
 
@@ -12,8 +13,8 @@ export default DS.Model.extend({
   solutions: DS.hasMany('solution'),
 
 
-  allAirlines: Ember.computed.mapBy('solutions', 'uniqueAirlines'),
-  uniqueAirlines: Ember.computed('allAirlines.[]', function () {
+  allAirlines: mapBy('solutions', 'uniqueAirlines'),
+  uniqueAirlines: computed('allAirlines.[]', function () {
     let uniqueAirlines = [];
     this.get('allAirlines').forEach(airlines => {
       airlines.forEach(airline => {

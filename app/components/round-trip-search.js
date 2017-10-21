@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   outWardDepartureAirport: "",
   outWardArrivalAirport: "",
   outWardDepartureDate: new Date(),
@@ -9,13 +10,13 @@ export default Ember.Component.extend({
   outWardInitialTravelClass: "ECONOMY",
   outWardMinDate: new Date(),
 
-  returnDepartureAirport: Ember.computed.alias('outWardArrivalAirport'),
-  returnArrivalAirport: Ember.computed.alias('outWardDepartureAirport'),
+  returnDepartureAirport: alias('outWardArrivalAirport'),
+  returnArrivalAirport: alias('outWardDepartureAirport'),
   returnDepartureDate: new Date(),
-  returnTravelClass: Ember.computed.alias('outWardTravelClass'),
-  returnNumberOfAdult: Ember.computed.alias('outWardNumberOfAdult'),
-  returnInitialTravelClass: Ember.computed.alias('outWardInitialTravelClass'),
-  returnMinDate: Ember.computed.alias('outWardDepartureDate'),
+  returnTravelClass: alias('outWardTravelClass'),
+  returnNumberOfAdult: alias('outWardNumberOfAdult'),
+  returnInitialTravelClass: alias('outWardInitialTravelClass'),
+  returnMinDate: alias('outWardDepartureDate'),
 
   actions: {
     search() {

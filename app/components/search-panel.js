@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import { equal } from '@ember/object/computed';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
 
   searchMode: 'oneWay',
 
-  isOneWay: Ember.computed.equal('searchMode','oneWay'),
-  isMultiCity: Ember.computed.equal('searchMode','multiCity'),
-  isRoundTrip: Ember.computed.equal('searchMode','roundTrip'),
+  isOneWay: equal('searchMode','oneWay'),
+  isMultiCity: equal('searchMode','multiCity'),
+  isRoundTrip: equal('searchMode','roundTrip'),
 
   actions: {
 

@@ -1,13 +1,15 @@
-import Ember from 'ember';
+import { mapBy, sort } from '@ember/object/computed';
+import { computed } from '@ember/object';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   queryParams: ['class', 'numberOfAdult'],
 
   sortParam: ['smallestAmount'],
 
   maxConnection: 0,
 
-  filteredSolutions: Ember.computed('model.solutions', 'model.solutions.@each.segments', 'maxConnection', function () {
+  filteredSolutions: computed('model.solutions', 'model.solutions.@each.segments', 'maxConnection', function () {
     let filteredSolutions = [];
     let maxConnection = parseInt(this.get('maxConnection')) + 1;
     let originalSolutions = this.get('model.solutions');
@@ -27,8 +29,8 @@ export default Ember.Controller.extend({
     return filteredSolutions;
   }),
 
-  allAirlines: Ember.computed.mapBy('filteredSolutions', 'uniqueAirlines'),
-  uniqueAirlines: Ember.computed('allAirlines.@each.uniqueAirlines', function () {
+  allAirlines: mapBy('filteredSolutions', 'uniqueAirlines'),
+  uniqueAirlines: computed('allAirlines.@each.uniqueAirlines', function () {
     let uniqueAirlines = [];
     this.get('allAirlines').forEach(airlines => {
       airlines.forEach(airline => {
@@ -42,6 +44,6 @@ export default Ember.Controller.extend({
   }),
 
   sortedSolutions:
-    Ember.computed.sort('filteredSolutions', 'sortParam')
+    sort('filteredSolutions', 'sortParam')
 })
 ;

@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
 
   slices: [{
     departureAirport: "",
@@ -13,7 +14,7 @@ export default Ember.Component.extend({
   }
   ],
 
-  onlyOneSlice: Ember.computed('slices.[]', function () {
+  onlyOneSlice: computed('slices.[]', function () {
     return this.get('slices').length === 1;
   }),
 

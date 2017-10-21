@@ -1,5 +1,6 @@
+import { alias } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
 
@@ -14,21 +15,21 @@ export default DS.Model.extend({
   legs: DS.hasMany('leg'),
 
 
-  originAirport: Ember.computed('legs.@each.origin', 'legs.[]', function () {
+  originAirport: computed('legs.@each.origin', 'legs.[]', function () {
     return this.get('legs.firstObject.origin');
   }),
 
-  destinationAirport: Ember.computed('legs.@each.destination', 'legs.[]', function () {
+  destinationAirport: computed('legs.@each.destination', 'legs.[]', function () {
     return this.get('legs.lastObject.destination');
   }),
 
-  arrivalAirport: Ember.computed.alias('destinationAirport'),
+  arrivalAirport: alias('destinationAirport'),
 
-  originLocalDepartureTime: Ember.computed('legs.[]', 'legs.@each.localDepartureTime', function () {
+  originLocalDepartureTime: computed('legs.[]', 'legs.@each.localDepartureTime', function () {
     return this.get('legs.firstObject.localDepartureTime');
   }),
 
-  destinationLocalArrivalTime: Ember.computed('legs.[]', 'legs.@each.localDepartureTime', function () {
+  destinationLocalArrivalTime: computed('legs.[]', 'legs.@each.localDepartureTime', function () {
     return this.get('legs.lastObject.localArrivalTime');
   })
 

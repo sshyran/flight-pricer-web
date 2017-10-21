@@ -1,12 +1,13 @@
+import { mapBy, min } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.Model.extend({
   prices: DS.hasMany('price'),
   refundable: DS.attr('boolean'),
   slices: DS.hasMany('slice'),
 
-  uniqueAirlines: Ember.computed('slices.@each.uniqueAirlines', function () {
+  uniqueAirlines: computed('slices.@each.uniqueAirlines', function () {
     let airlines = [];
     this.get('slices').forEach(slice => {
       slice.get('uniqueAirlines').forEach(airline => {
@@ -19,7 +20,7 @@ export default DS.Model.extend({
   }),
 
 
-  amounts: Ember.computed.mapBy('prices', 'requestCurrencyAmount'),
-  smallestAmount: Ember.computed.min('amounts'),
+  amounts: mapBy('prices', 'requestCurrencyAmount'),
+  smallestAmount: min('amounts'),
 })
 ;

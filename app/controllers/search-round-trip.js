@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
 /* global moment */
-export default Ember.Controller.extend({
+export default Controller.extend({
   actions: {
     search(params) {
       let formattedDepartureDate = moment(params.departureDate).format('YYYY-MM-DD');

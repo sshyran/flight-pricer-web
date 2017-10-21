@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
-  outwardSlice: Ember.computed.alias('solution.slices.firstObject'),
-  returnSlice: Ember.computed.alias('solution.slices.lastObject'),
+export default Component.extend({
+  outwardSlice: alias('solution.slices.firstObject'),
+  returnSlice: alias('solution.slices.lastObject'),
 
   activeTab: 'summary',
 
