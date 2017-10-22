@@ -22,9 +22,13 @@
     </div>
 
     <div class="col-12 col-md-10">
-      {{#each sortedSolutions as |solution|}}
-        {{one-way-solution slice=solution.slices.firstObject prices=solution.prices}}
-      {{/each}}
+      {{#ember-collection
+        items=sortedSolutions
+        cell-layout=(percentage-columns-layout sortedSolutions.length columnWidth rowHeight) as |item index|
+      }}
+        {{one-way-solution slice=item.slices.firstObject prices=item.prices}}
+      {{/ember-collection}}
+
     </div>
   </div>
 

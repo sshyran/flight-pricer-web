@@ -11,6 +11,10 @@ export default Controller.extend({
 
   selectedAirlines: filterBy('model.airlines', 'isSelected', true),
 
+  columnWidth: [100],
+  rowHeight: 260,
+
+
   filteredSolutions: computed('model.solutions', 'maxConnection', 'selectedAirlines.[]', function () {
     let filteredSolutions = [];
     let maxConnection = parseInt(this.get('maxConnection')) + 1;
