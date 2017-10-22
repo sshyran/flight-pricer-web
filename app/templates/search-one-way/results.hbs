@@ -6,6 +6,13 @@
 
       {{filter/airline-filter airlines=model.airlines}}
 
+      {{filter/price-filter
+        lowestPrice = lowestPrice
+        biggestPrice = biggestPrice
+        priceRangeLowerBound  = (mut priceRangeLowerBound)
+        priceRangeHigherBound = (mut priceRangeHigherBound)}}
+
+
       <div class="filter-criteria">
         <h6>Time filters</h6>
         <ul class="list-unstyled">

@@ -6,6 +6,12 @@
 
       {{filter/airline-filter airlines=model.airlines}}
 
+      {{filter/price-filter
+        lowestPrice = lowestPrice
+        biggestPrice = biggestPrice
+        priceRangeLowerBound  = (mut priceRangeLowerBound)
+        priceRangeHigherBound = (mut priceRangeHigherBound)}}
+
       <div class="filter-criteria">
         <h6>Time filters</h6>
         <ul class="list-unstyled">
@@ -19,10 +25,11 @@
 
     <div class="col-12 col-md-10">
       {{#ember-collection
-        items=sortedSolutions
-        cell-layout=(percentage-columns-layout sortedSolutions.length columnWidth rowHeight) as |item index|
+        items = sortedSolutions
+        cell-layout = (percentage-columns-layout sortedSolutions.length columnWidth rowHeight)
+      as |item index|
       }}
-        {{round-trip-solution solution=item}}
+        {{round-trip-solution solution = item}}
       {{/ember-collection}}
     </div>
   </div>
