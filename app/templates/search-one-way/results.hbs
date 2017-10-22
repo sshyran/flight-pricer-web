@@ -2,11 +2,7 @@
   <div class="results row ">
 
     <div class="col-6 col-md-2">
-      <div class="filter-criteria">
-        <h6>Connection filter</h6>
-        Max Number of Stop:
-        {{input type="number" value=maxConnection}}
-      </div>
+      {{filter/connection-filter onChange=(action (mut maxConnection))}}
 
       {{filter/airline-filter airlines=model.airlines}}
 

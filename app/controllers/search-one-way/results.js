@@ -7,7 +7,7 @@ export default Controller.extend({
 
   sortParam: ['smallestAmount'],
 
-  maxConnection: 0,
+  maxConnection: -1,
   selectedAirlines: filterBy('model.airlines', 'isSelected', true),
 
   columnWidth: [100],
@@ -27,7 +27,7 @@ export default Controller.extend({
 
       if (allAirlinesAreInFilterSelection) {
         solution.get('slices').forEach(slice => {
-          if (slice.get('segments.length') <= maxConnection) {
+          if (slice.get('segments.length') <= maxConnection ||  maxConnection === 0) {
             filteredSolutions.pushObject(solution)
           }
         });

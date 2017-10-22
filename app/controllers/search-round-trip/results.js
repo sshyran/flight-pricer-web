@@ -7,7 +7,7 @@ export default Controller.extend({
 
   sortParam: ['smallestAmount'],
 
-  maxConnection: 0,
+  maxConnection: -1,
 
   selectedAirlines: filterBy('model.airlines', 'isSelected', true),
 
@@ -37,7 +37,7 @@ export default Controller.extend({
             allSliceMeetConnectionRequirement = allSliceMeetConnectionRequirement && false;
           }
         });
-        if (allSliceMeetConnectionRequirement) {
+        if (allSliceMeetConnectionRequirement || maxConnection === 0) {
           filteredSolutions.pushObject(solution)
         }
       }
