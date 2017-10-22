@@ -1,0 +1,7 @@
+<h6>Airline filters</h6>
+<ul class="list-unstyled">
+  {{#each sortedAirlines as |airline|}}
+    <li><label>{{input type="checkbox" checked=(mut (get airline 'isSelected'))}}  {{airline.name}}</label></li>
+  {{/each}}
+</ul>
+{{yield}}

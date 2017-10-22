@@ -1,5 +1,5 @@
-import { computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
+import {computed} from '@ember/object';
+import {alias} from '@ember/object/computed';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -24,12 +24,12 @@ export default Component.extend({
     return this.get('returnSlice.segments.length') - 1;
   }),
 
-  outwardFlights: computed('outwardSlice.segments.@each.carrierIATA', 'outwardSlice.segments.@each.number', function () {
+  outwardFlights: computed('outwardSlice.segments.@each.airline', 'outwardSlice.segments.@each.number', function () {
     let outwardFlights = "";
     let segments = this.get('outwardSlice.segments');
 
     segments.forEach(segment => {
-      outwardFlights += segment.get('carrierIATA');
+      outwardFlights += segment.get('airline.id');
       outwardFlights += " ";
       outwardFlights += segment.get('number');
       outwardFlights += ", ";
@@ -37,12 +37,12 @@ export default Component.extend({
     return outwardFlights.substr(0, outwardFlights.length - 2);
   }),
 
-  returnFlights: computed('returnSlice.segments.@each.carrierIATA', 'returnSlice.segments.@each.number', function () {
+  returnFlights: computed('returnSlice.segments.@each.airline', 'returnSlice.segments.@each.number', function () {
     let outwardFlights = "";
     let segments = this.get('returnSlice.segments');
 
     segments.forEach(segment => {
-      outwardFlights += segment.get('carrierIATA');
+      outwardFlights += segment.get('airline.id');
       outwardFlights += " ";
       outwardFlights += segment.get('number');
       outwardFlights += ", ";

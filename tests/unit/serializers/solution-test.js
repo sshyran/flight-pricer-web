@@ -1,12 +1,12 @@
-import { moduleForModel, test } from 'ember-qunit';
+import {moduleForModel, test} from 'ember-qunit';
 
 moduleForModel('solution', 'Unit | Serializer | solution', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:solution','model:slice', 'model:price']
+  needs: ['serializer:solution', 'model:slice', 'model:price', 'model:airline']
 });
 
 // Replace this with your real tests.
-test('it serializes records', function(assert) {
+test('it serializes records', function (assert) {
   let record = this.subject();
 
   let serializedRecord = record.serialize();

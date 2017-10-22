@@ -1,8 +1,8 @@
-import { moduleForModel, test } from 'ember-qunit';
+import {moduleForModel, test} from 'ember-qunit';
 
 moduleForModel('one-way-flight-search', 'Unit | Serializer | one way flight search', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:one-way-flight-search', 'model:solution']
+  needs: ['serializer:one-way-flight-search', 'model:solution', 'model:airline']
 });
 
 // Replace this with your real tests.

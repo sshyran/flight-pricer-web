@@ -16,7 +16,7 @@
         </div>
         <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
 
-          <strong><i class="fa fa-plane"></i> {{segment.carrierIATA}} {{segment.number}}<br/></strong>
+          <strong><i class="fa fa-plane"></i> {{segment.airline.id}} {{segment.number}}<br/></strong>
           <ul class="list-unstyled">
             {{#each segment.legs as |leg|}}
               <li class="small text-muted"> {{leg.origin}} - {{leg.destination}} ({{moment-duration

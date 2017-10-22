@@ -1,11 +1,11 @@
-import { alias } from '@ember/object/computed';
-import { computed } from '@ember/object';
+import {alias} from '@ember/object/computed';
+import {computed} from '@ember/object';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
 
   duration: DS.attr('number'),
-  carrierIATA: DS.attr('string'),
+  airline: DS.belongsTo('airline', {inverse: null}),
   number: DS.attr('string'),
   cabin: DS.attr('string'),
   bookingCode: DS.attr('string'),
@@ -31,6 +31,6 @@ export default DS.Model.extend({
 
   destinationLocalArrivalTime: computed('legs.[]', 'legs.@each.localDepartureTime', function () {
     return this.get('legs.lastObject.localArrivalTime');
-  })
+  }),
 
 });

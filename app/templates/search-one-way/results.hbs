@@ -8,14 +8,7 @@
         {{input type="number" value=maxConnection}}
       </div>
 
-      <div class="filter-criteria">
-        <h6>Airline filters</h6>
-        <ul class="list-unstyled">
-          {{#each uniqueAirlines as |airline|}}
-            <li>{{airline}}</li>
-          {{/each}}
-        </ul>
-      </div>
+      {{filter/airline-filter airlines=model.airlines}}
 
       <div class="filter-criteria">
         <h6>Time filters</h6>

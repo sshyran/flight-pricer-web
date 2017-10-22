@@ -1,5 +1,3 @@
-import { computed } from '@ember/object';
-import { mapBy } from '@ember/object/computed';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -9,23 +7,9 @@ export default DS.Model.extend({
   departureDate: DS.attr('date'),
   numberOfAdults: DS.attr('number'),
   cabin: DS.attr('string'),
+  airlines: DS.hasMany('airline'),
+
 
   solutions: DS.hasMany('solution'),
-
-
-  allAirlines: mapBy('solutions', 'uniqueAirlines'),
-  uniqueAirlines: computed('allAirlines.[]', function () {
-    let uniqueAirlines = [];
-    this.get('allAirlines').forEach(airlines => {
-      airlines.forEach(airline => {
-        if (!uniqueAirlines.includes(airline)) {
-          uniqueAirlines.pushObject(airline);
-        }
-      });
-    });
-
-    return uniqueAirlines.sort();
-  }),
-
 
 });
