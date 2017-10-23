@@ -27,7 +27,7 @@ export default Component.extend({
 
   filteredSolutions: computed('solutions', 'maxConnection', 'selectedAirlines.[]', 'priceRangeLowerBound', 'priceRangeHigherBound', function () {
     let filteredSolutions = [];
-    let maxConnection = parseInt(this.get('maxConnection')) + 1;
+    let maxConnection = parseInt(this.get('maxConnection'));
     let originalSolutions = this.get('solutions');
 
     let lowerPrice = this.get('priceRangeLowerBound') === undefined ? this.get('lowestPrice') : this.get('priceRangeLowerBound');
@@ -45,13 +45,13 @@ export default Component.extend({
         if (allAirlinesAreInFilterSelection) {
           let allSliceMeetConnectionRequirement = true;
           solution.get('slices').forEach(slice => {
-            if (slice.get('segments.length') <= maxConnection) {
+            if (slice.get('numberOfStops') <= maxConnection) {
               allSliceMeetConnectionRequirement = allSliceMeetConnectionRequirement && true;
             } else {
               allSliceMeetConnectionRequirement = allSliceMeetConnectionRequirement && false;
             }
           });
-          if (allSliceMeetConnectionRequirement || maxConnection === 0) {
+          if (allSliceMeetConnectionRequirement || maxConnection === -1) {
             filteredSolutions.pushObject(solution)
           }
         }
