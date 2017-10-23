@@ -1,38 +1,12 @@
 <div class="container-fluid">
-  <div class="results row ">
 
-    <div class="col-6 col-md-2">
-      {{filter/connection-filter onChange=(action (mut maxConnection))}}
-
-      {{filter/airline-filter airlines=model.airlines}}
-
-      {{filter/price-filter
-        lowestPrice = lowestPrice
-        biggestPrice = biggestPrice
-        priceRangeLowerBound  = (mut priceRangeLowerBound)
-        priceRangeHigherBound = (mut priceRangeHigherBound)}}
-
-      <div class="filter-criteria">
-        <h6>Time filters</h6>
-        <ul class="list-unstyled">
-          {{#each model.uniqueAirlines as |airline|}}
-            <li>{{airline}}</li>
-          {{/each}}
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="col-12 col-md-10">
-      {{#ember-collection
-        items = sortedSolutions
-        cell-layout = (percentage-columns-layout sortedSolutions.length columnWidth rowHeight)
-      as |item index|
-      }}
-        {{round-trip-solution solution = item}}
-      {{/ember-collection}}
-    </div>
-  </div>
+  {{#search-result
+    airlines = model.airlines
+    solutions = model.solutions
+  as |item|
+  }}
+    {{round-trip-solution solution = item}}
+  {{/search-result}}
 
   {{outlet}}
 </div>
