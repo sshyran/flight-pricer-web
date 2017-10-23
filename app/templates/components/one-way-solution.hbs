@@ -3,15 +3,12 @@
     {{#each slice.segments as |segment|}}
       <div class="row">
         <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-          <ul class="list-unstyled">
-            <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
-              segment.originLocalDepartureTime
-              'DD/MM/YYYY'}}</li>
-            <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
-              segment.originLocalDepartureTime 'HH:mm'}}</li>
-          </ul>
+          <h6><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+            outwardDepartureLocalTime
+            'DD/MM/YYYY'}}&nbsp; {{moment-format
+            outwardDepartureLocalTime 'HH:mm'}}</h6>
 
-          <h6>{{segment.originAirport}}</h6>
+          <p>{{segment.originAirport}}</p>
 
         </div>
         <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
@@ -30,33 +27,34 @@
 
         </div>
         <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-
-          <ul class="list-unstyled">
-            <li class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
-              segment.destinationLocalArrivalTime
-              'DD/MM/YYYY'}}</li>
-            <li class="h5"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{moment-format
-              segment.destinationLocalArrivalTime 'HH:mm'}}</li>
-          </ul>
-          <h6>{{segment.destinationAirport}}</h6>
+          <h6>
+            <i class="fa fa-calendar"></i>&nbsp;{{moment-format
+            segment.destinationLocalArrivalTime
+            'DD/MM/YYYY'}}&nbsp;{{moment-format
+            segment.destinationLocalArrivalTime 'HH:mm'}}
+          </h6>
+          <p>{{segment.destinationAirport}}</p>
           <p class="small text-muted"></p>
         </div>
       </div>
     {{/each}}
   </div>
   <div class="col-3">
-    {{#each prices as |price index|}}
-      {{#if (eq index 0)}}
-        <h6 class="text-success text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
-          class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
-          {{price.country}})</span></h6>
-      {{else}}
-        <h6 class="text-warning text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
-          class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
-          {{price.country}})</span></h6>
-      {{/if}}
-    {{/each}}
-
+    <ul class="list-unstyled text-right">
+      {{#each prices as |price index|}}
+        {{#if (eq index 0)}}
+          <li class="h6 text-success text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+            class="small">({{#if
+            (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
+            {{price.country}})</span></li>
+        {{else}}
+          <li class="text-warning text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+            class="small">({{#if
+            (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
+            {{price.country}})</span></li>
+        {{/if}}
+      {{/each}}
+    </ul>
   </div>
 
 

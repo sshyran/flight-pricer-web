@@ -1,11 +1,11 @@
 <div class="col-9">
   <div class="row summary-slice">
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+      <h6><i class="fa fa-calendar"></i>&nbsp;{{moment-format
         outwardDepartureLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        outwardDepartureLocalTime 'HH:mm'}}</h4>
-      <h6>{{departureAirport}}</h6>
+        outwardDepartureLocalTime 'HH:mm'}}</h6>
+      <p>{{departureAirport}}</p>
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
@@ -21,21 +21,21 @@
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+      <h6><i class="fa fa-calendar"></i>&nbsp;{{moment-format
         outwardArrivalLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        outwardArrivalLocalTime 'HH:mm'}}</h4>
-      <h6>{{arrivalAirport}}</h6>
+        outwardArrivalLocalTime 'HH:mm'}}</h6>
+      <p>{{arrivalAirport}}</p>
     </div>
   </div>
 
   <div class="row summary-slice">
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      <h4><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+      <h6><i class="fa fa-calendar"></i>&nbsp;{{moment-format
         returnDepartureLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        returnDepartureLocalTime 'HH:mm'}}</h4>
-      <h6>{{arrivalAirport}}</h6>
+        returnDepartureLocalTime 'HH:mm'}}</h6>
+      <p>{{arrivalAirport}}</p>
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
@@ -49,27 +49,28 @@
     </div>
 
     <div class="col-4 border border-left-0 border-top-0 border-bottom-0">
-      <h4 class="h4"><i class="fa fa-calendar"></i>&nbsp;{{moment-format
+      <h6><i class="fa fa-calendar"></i>&nbsp;{{moment-format
         returnArrivalLocalTime
         'DD/MM/YYYY'}}&nbsp; {{moment-format
-        returnArrivalLocalTime 'HH:mm'}}</h4>
-      <h6>{{departureAirport}}</h6>
+        returnArrivalLocalTime 'HH:mm'}}</h6>
+      <p>{{departureAirport}}</p>
     </div>
 
   </div>
 
 </div>
 <div class="col-3">
+  <ul class="list-unstyled text-right">
   {{#each solution.prices as |price index|}}
     {{#if (eq index 0)}}
-      <h6 class="text-success text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+      <li class="h6 text-success text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
         class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
-        {{price.country}})</span></h6>
+        {{price.country}})</span></li>
     {{else}}
-      <h6 class="text-warning text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
+      <li class="text-warning text-right">{{price.requestCurrency}} {{price.requestCurrencyAmount}} <span
         class="small">({{#if  (not-eq price.currency price.requestCurrency) }}{{price.currency}} {{price.amount}}{{/if}}
-        {{price.country}})</span></h6>
+        {{price.country}})</span></li>
     {{/if}}
   {{/each}}
-
+  </ul>
 </div>
