@@ -20,13 +20,16 @@
 
 </div>
 
-<div class="col-12 col-md-10">
-  {{#ember-collection
-    items = sortedSolutions
-    cell-layout = (percentage-columns-layout sortedSolutions.length columnWidth rowHeight)
-  as |item index|
+<div class="col-12 col-md-10 search-results-container" >
+  {{#vertical-collection
+    sortedSolutions
+    containerSelector='body'
+    estimateHeight=rowHeight
+  as |item|
   }}
     {{yield item}}
-  {{/ember-collection}}
+
+  {{/vertical-collection}}
+
 </div>
 

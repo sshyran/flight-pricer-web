@@ -16,6 +16,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@html-next/vertical-collection": "^1.0.0-beta.8",
     "bootstrap": "^4.0.0-beta.2",
     "broccoli-asset-rev": "^2.4.5",
     "components-font-awesome": "^4.6.3",
@@ -35,7 +36,6 @@
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-collection": "^1.0.0-alpha.7",
     "ember-data": "~2.16.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
