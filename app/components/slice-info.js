@@ -2,7 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
 
-  classNames: ['row'],
+  classNames: ['row', 'one-slice'],
 
   detailsOpen: false,
 
