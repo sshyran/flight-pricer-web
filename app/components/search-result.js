@@ -3,7 +3,7 @@ import {computed} from '@ember/object';
 import Component from '@ember/component';
 
 export default Component.extend({
-  classNames: ['results', 'row'],
+  classNames: ['results'],
 
   solutions: [],
   airlines: [],

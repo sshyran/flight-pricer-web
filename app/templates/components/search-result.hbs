@@ -1,26 +1,41 @@
-<div class="col-md-3 col-sm-12">
-  {{filter/connection-filter onChange=(action (mut maxConnection))}}
+<div class="row result-header-row">
+  <div class="col-md-3 col-sm-12">
+    <div class="result-header-content-left">
+      <i class="fa fa-search"></i> {{sortedSolutions.length}} Results found
+    </div>
+  </div>
 
-  {{filter/airline-filter airlines=airlines}}
-
-  {{filter/price-filter
-    lowestPrice = lowestPrice
-    biggestPrice = biggestPrice
-    priceRangeLowerBound  = (mut priceRangeLowerBound)
-    priceRangeHigherBound = (mut priceRangeHigherBound)}}
-
+  <div class="col-md-9 col-sm-12">
+    <div class="result-header-content-right">
+      Sort results by
+    </div>
+  </div>
 </div>
+<div class="row">
 
-<div class="col-md-9 col-sm-12 search-results-container">
-  {{#vertical-collection
-    sortedSolutions
-    containerSelector='body'
-    estimateHeight=rowHeight
-  as |item|
-  }}
-    {{yield item}}
+  <div class="col-md-3 col-sm-12">
+    {{filter/connection-filter onChange=(action (mut maxConnection))}}
 
-  {{/vertical-collection}}
+    {{filter/airline-filter airlines=airlines}}
 
+    {{filter/price-filter
+      lowestPrice = lowestPrice
+      biggestPrice = biggestPrice
+      priceRangeLowerBound  = (mut priceRangeLowerBound)
+      priceRangeHigherBound = (mut priceRangeHigherBound)}}
+
+  </div>
+
+  <div class="col-md-9 col-sm-12 search-results-container">
+    {{#vertical-collection
+      sortedSolutions
+      containerSelector='body'
+      estimateHeight=rowHeight
+    as |item|
+    }}
+      {{yield item}}
+
+    {{/vertical-collection}}
+
+  </div>
 </div>
-
