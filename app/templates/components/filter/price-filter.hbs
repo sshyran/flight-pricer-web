@@ -1,7 +1,8 @@
-<h6>Price</h6>
-Lower price {{priceRangeLowerBound}}: {{input type="range" value=(mut priceRangeLowerBound) min=lowestPrice
-                                              max=biggestPrice}}<br/>
-Higher price {{priceRangeHigherBound}}: {{input type="range" value=(mut priceRangeHigherBound) min=priceRangeLowerBound
-                                                max=biggestPrice}}
+{{#filter/filter-block blockTitle='Price'}}
+  Lower price {{priceRangeLowerBound}}: {{input type="range" value=(mut priceRangeLowerBound) min=lowestPrice
+                                                max=biggestPrice}}<br/>
+  Higher price {{priceRangeHigherBound}}: {{input type="range" value=(mut priceRangeHigherBound)
+                                                  min=priceRangeLowerBound
+                                                  max=biggestPrice}}
 
-{{yield}}
+{{/filter/filter-block}}

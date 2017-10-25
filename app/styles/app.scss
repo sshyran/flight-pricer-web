@@ -1,5 +1,6 @@
 @import "ember-cli-bootstrap-4/bootstrap";
 @import "flight-info";
+@import "filters";
 
 body {
   background-color: #fafafa;
@@ -28,13 +29,6 @@ $fa-font-path: "/fonts";
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-}
-
-
-
-.filter-criteria {
-  padding: 5px 5px 0 5px;
-  background-color: #fff;
 }
 
 .summary-slice {
