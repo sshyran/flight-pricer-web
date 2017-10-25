@@ -1,30 +1,30 @@
-<div class="row">
-  <div class="col-md-12">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a {{action 'showSummary'}} href="#" class="nav-link {{if (eq 'summary' activeTab) 'active' ''}}">Summary</a>
-      </li>
-      <li class="nav-item">
-        <a {{action 'showOutward'}} href="#" class="nav-link {{if (eq 'outward' activeTab) 'active' ''}}">Outward
-          trip</a>
-      </li>
-      <li class="nav-item">
-        <a {{action 'showReturn'}} href="#" class="nav-link {{if (eq 'return' activeTab) 'active' ''}}">Return trip</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      {{#if (eq 'summary' activeTab)}}
-        {{round-trip-summary solution=solution class="row solution"}}
-      {{/if}}
-      {{#if (eq 'outward' activeTab)}}
-        {{one-way-solution slice=outwardSlice prices=solution.prices}}
-      {{/if}}
-
-      {{#if (eq 'return' activeTab)}}
-        {{one-way-solution slice=returnSlice prices=solution.prices}}
-      {{/if}}
-
+<div class="row solution">
+  <div class="col-10">
+    {{slice-info slice=outwardSlice title='Departure'}}
+    {{slice-info slice=returnSlice title='Return'}}
+  </div>
+  <div class="col-2 order-2">
+    <div class="price-block">
+      <div class="main-price-block">
+        <div class="price">{{cheapestPrice.requestCurrencyAmount}} {{cheapestPrice.requestCurrency}}
+          {{#if (not-eq price.currency price.requestCurrency) }}
+            ({{cheapestPrice.amount}} {{cheapestPrice.currency}})
+          {{/if}}
+        </div>
+        <div class="price-country">{{cheapestPrice.country}}</div>
+      </div>
+      <div class="other-price">
+        {{#each pricesExceptCheapest as |price|}}
+          <span class="price-country">{{price.country}}</span>
+          <span class="price">
+            {{price.requestCurrencyAmount}} {{price.requestCurrency}}
+            {{#if (not-eq price.currency price.requestCurrency) }}
+              ({{price.amount}} {{price.currency}})
+            {{/if}}
+          </span>
+          <br>
+        {{/each}}
+      </div>
     </div>
-
   </div>
 </div>

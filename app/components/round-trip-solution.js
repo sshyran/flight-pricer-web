@@ -1,25 +1,14 @@
-import { alias } from '@ember/object/computed';
+import {alias} from '@ember/object/computed';
+import {computed} from '@ember/object';
 import Component from '@ember/component';
 
 export default Component.extend({
   outwardSlice: alias('solution.slices.firstObject'),
   returnSlice: alias('solution.slices.lastObject'),
 
-  activeTab: 'summary',
+  cheapestPrice: alias('solution.prices.firstObject'),
 
-
-  actions: {
-    showSummary() {
-      this.set('activeTab', 'summary');
-    },
-
-    showOutward() {
-      this.set('activeTab', 'outward');
-    },
-
-    showReturn() {
-      this.set('activeTab', 'return');
-    }
-
-  }
+  pricesExceptCheapest: computed('solution.prices.[]', function () {
+    return this.get('solution.prices').slice(1);
+  })
 });

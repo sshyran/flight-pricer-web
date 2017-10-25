@@ -1,0 +1,92 @@
+<div class="col-1 slice-direction">
+  {{title}}
+</div>
+<div class="col-11">
+
+  <div class="slice-info-header">
+    {{moment-format slice.originLocalDepartureTime 'DD/MM/YYYY'}}
+    {{slice.originAirport}} - {{slice.destinationAirport}}
+    <span class="duration">
+        <i class="fa fa-clock-o"></i>
+      {{moment-duration slice.duration 'minutes'}}
+      </span>
+  </div>
+
+  <div class="slice-line">
+    <div class="slice-info">
+      <strong>Departure</strong>
+      <span>
+          {{slice.originAirport}}          <br>
+        {{moment-format slice.originLocalDepartureTime 'DD/MM HH:mm'}}
+          </span>
+    </div>
+
+    <div class="slice-line-divider"></div>
+    {{#if slice.direct}}
+    {{else}}
+      <div class="slice-info">
+        <strong>{{slice.numberOfStops}} stop</strong>
+        <span>{{#each slice.connectingAirports as |airport i|}}
+          {{#if (not-eq i 0)}}, {{/if}}
+          {{airport}}
+        {{/each}}</span><br>&nbsp;
+      </div>
+      <div class="slice-line-divider"></div>
+    {{/if}}
+
+    <div class="slice-info">
+      <strong>Arrival</strong>
+      <span>
+          {{slice.destinationAirport}}<br>
+        {{moment-format slice.destinationLocalArrivalTime 'DD/MM HH:mm'}}
+          </span>
+    </div>
+
+    <div class="slice-line-divider"></div>
+
+    <div class="slice-info">
+      <strong>Duration</strong><br>
+      <span>{{moment-duration slice.duration 'minutes'}}</span>
+    </div>
+
+    <div class="slice-details-toggle">
+      <strong {{action 'toggleDetails'}}>Details <i class="fa {{if detailsOpen 'fa-angle-up' 'fa-angle-down'}}"></i>
+      </strong>
+    </div>
+  </div>
+
+  {{#if detailsOpen}}
+    <div class="clearfix"></div>
+    <div class="slice-details">
+
+      {{#each slice.segments as |segment|}}
+        <div class="segment">
+          <div class="segment-details-departure">
+            <div class="segment-date">{{moment-format segment.originLocalDepartureTime 'DD/MM/YYYY'}}</div>
+            <div class="segment-time-airport">{{moment-format segment.originLocalDepartureTime
+                                                              'HH:mm'}} {{segment.originAirport}}</div>
+          </div>
+          <div class="segment-details-arrival">
+            <div class="segment-date">{{moment-format segment.destinationLocalArrivalTime 'DD/MM/YYYY'}}</div>
+            <div class="segment-time-airport">{{moment-format segment.destinationLocalArrivalTime
+                                                              'HH:mm'}} {{segment.destinationAirport}}</div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="segment-details-other">
+            Flight {{segment.airline.id}}-{{segment.number}}
+            {{#each segment.legs as |leg i|}}
+              {{#if (not-eq i 0)}}, {{/if}}
+              {{leg.aircraft}}
+            {{/each}}
+
+            {{segment.cabin}}<br>
+            {{#each segment.legs as |leg|}}
+              {{leg.operatingDisclosure}}
+            {{/each}}
+          </div>
+
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
