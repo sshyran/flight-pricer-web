@@ -1,4 +1,4 @@
-<div class="col-6 col-md-2">
+<div class="col-3">
   {{filter/connection-filter onChange=(action (mut maxConnection))}}
 
   {{filter/airline-filter airlines=airlines}}
@@ -20,7 +20,7 @@
 
 </div>
 
-<div class="col-12 col-md-10 search-results-container" >
+<div class="col-9 search-results-container">
   {{#vertical-collection
     sortedSolutions
     containerSelector='body'
