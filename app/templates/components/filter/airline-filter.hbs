@@ -1,7 +1,13 @@
 {{#filter/filter-block blockTitle='Airline filters'}}
   <ul class="list-unstyled">
     {{#each sortedAirlines as |airline|}}
-      <li><label>{{input type="checkbox" checked=(mut (get airline 'isSelected'))}}  {{airline.name}}</label></li>
+      <li>
+        <label class="custom-control custom-checkbox">
+          {{input type="checkbox" checked=(mut (get airline 'isSelected')) class='custom-control-input'}}
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">{{airline.name}}</span>
+        </label>
+      </li>
     {{/each}}
   </ul>
 {{/filter/filter-block}}
