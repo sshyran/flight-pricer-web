@@ -39,13 +39,35 @@ export default DS.Model.extend({
     return this.get('segments.length') - 1;
   }),
 
-  connectingAirports: computed('segments.@each.originAirport', function () {
-    const nbSegments = this.get('segments.length');
-    let connectingAirport = [];
-    let segments = this.get('segments');
-    for (let i = 1; i < nbSegments; i++) {
-      connectingAirport.pushObject(segments.objectAt(i).get('originAirport'));
+  displayFriendlySegments: computed('segments.[]', function () {
+    let ret = [];
+
+    const segmentsLength = this.get('segments.length');
+
+    const _this = this;
+    for (let i = 0; i < segmentsLength; i++) {
+      let segment = _this.get('segments').objectAt(i);
+
+      let nextDepartureFromArrivalLocation = undefined;
+      if (i < segmentsLength - 1) {
+        nextDepartureFromArrivalLocation = _this.get('segments').objectAt(i + 1).get('originLocalDepartureTime');
+      }
+
+      let friendlySegment = {
+        originAirport: segment.get('originAirport'),
+        destinationAirport: segment.get('destinationAirport'),
+        originLocalDepartureTime: segment.get('originLocalDepartureTime'),
+        destinationLocalArrivalTime: segment.get('destinationLocalArrivalTime'),
+        nextDepartureFromArrivalLocation: nextDepartureFromArrivalLocation,
+        connectionDuration: segment.get('connectionDuration')
+
+      };
+
+      ret.push(friendlySegment);
+
     }
-    return connectingAirport;
+
+
+    return ret;
   })
 });
