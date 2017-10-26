@@ -25,6 +25,22 @@ export default Component.extend({
   priceRangeLowerBound: undefined,
   priceRangeHigherBound: undefined,
 
+  isSortByAmount: computed('sortParam.@each', function () {
+    return this.get('sortParam').indexOf('smallestAmount') >= 0;
+  }),
+
+  isSortByDepartureTime: computed('sortParam.@each', function () {
+    return this.get('sortParam').indexOf('slices.firstObject.originalDepartureTimestamp') >= 0;
+  }),
+
+  isSortByArrivalTime: computed('sortParam.@each', function () {
+    return this.get('sortParam').indexOf('slices.lastObject.destinationArrivalTimestamp') >= 0;
+  }),
+
+  isSortByDuration: computed('sortParam.@each', function () {
+    return this.get('sortParam').indexOf('totalDuration') >= 0;
+  }),
+
   filteredSolutions: computed('solutions', 'maxConnection', 'selectedAirlines.[]', 'priceRangeLowerBound', 'priceRangeHigherBound', function () {
     let filteredSolutions = [];
     let maxConnection = parseInt(this.get('maxConnection'));
@@ -60,8 +76,27 @@ export default Component.extend({
     return filteredSolutions;
   }),
 
-  sortedSolutions:
-    sort('filteredSolutions', 'sortParam')
+  sortedSolutions: sort('filteredSolutions', 'sortParam'),
+
+  actions: {
+    sortByPrice() {
+      this.set('sortParam', ['smallestAmount']);
+    },
+
+    sortByDepartureTime() {
+      this.set('sortParam', ['slices.firstObject.originalDepartureTimestamp']);
+    },
+
+    sortByArrivalTime() {
+      this.set('sortParam', ['slices.lastObject.destinationArrivalTimestamp']);
+    },
+
+    sortByDuration() {
+      this.set('sortParam', ['totalDuration']);
+    }
+
+
+  }
 
 
 });

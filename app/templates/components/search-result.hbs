@@ -7,7 +7,25 @@
 
   <div class="col-md-9 col-sm-12 white-background">
     <div class="result-header-content-right">
-      Sort results by
+      Sort results by&nbsp;
+      <button type="submit" class="btn btn-sm {{if isSortByAmount 'btn-primary' 'btn-outline-primary'}}" {{action
+        'sortByPrice'}}>
+        Price
+      </button>
+      &nbsp;
+      <button type="submit" class="btn btn-sm {{if isSortByDepartureTime 'btn-primary' 'btn-outline-primary'}}" {{action
+        'sortByDepartureTime'}}>
+        Departure time
+      </button>
+      &nbsp;
+      <button type="submit" class="btn btn-sm {{if isSortByArrivalTime 'btn-primary' 'btn-outline-primary'}}" {{action
+        'sortByArrivalTime'}}>
+        Arrival time
+      </button>
+      &nbsp;
+      <button type="submit" class="btn btn-sm {{if isSortByDuration 'btn-primary' 'btn-outline-primary'}}" {{action
+        'sortByDuration'}}>Duration
+      </button>
     </div>
   </div>
 </div>

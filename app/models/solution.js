@@ -1,4 +1,4 @@
-import {mapBy, min} from '@ember/object/computed';
+import {mapBy, min, sum} from '@ember/object/computed';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -9,5 +9,9 @@ export default DS.Model.extend({
 
   amounts: mapBy('prices', 'requestCurrencyAmount'),
   smallestAmount: min('amounts'),
+
+  allDuration: mapBy('slices', 'duration'),
+  totalDuration: sum('allDuration')
+
 
 });
