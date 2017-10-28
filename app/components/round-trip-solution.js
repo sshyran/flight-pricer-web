@@ -6,9 +6,9 @@ export default Component.extend({
   outwardSlice: alias('solution.slices.firstObject'),
   returnSlice: alias('solution.slices.lastObject'),
 
-  cheapestPrice: alias('solution.prices.firstObject'),
+  cheapestPrice: alias('solution.cheapestPrice'),
 
-  pricesExceptCheapest: computed('solution.prices.[]', function () {
-    return this.get('solution.prices').slice(1);
+  pricesExceptCheapest: computed('solution.orderedPrices.[]', function () {
+    return this.get('solution.orderedPrices').slice(1);
   })
 });

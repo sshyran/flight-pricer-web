@@ -4,9 +4,9 @@
     airlines = model.airlines
     solutions = model.solutions
     rowHeight = 190
-  as |item|
+  as |solution|
   }}
-    {{one-way-solution slice=item.slices.firstObject prices=item.prices}}
+    {{one-way-solution solution = solution}}
   {{/search-result}}
 
   {{outlet}}

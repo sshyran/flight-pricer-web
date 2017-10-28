@@ -5,15 +5,15 @@
   <div class="col-2">
     <div class="price-block">
       <div class="main-price-block">
-        <div class="price">{{cheapestPrice.requestCurrencyAmount}} {{cheapestPrice.requestCurrency}}
-          {{#if (not-eq price.currency price.requestCurrency) }}
-            ({{cheapestPrice.amount}} {{cheapestPrice.currency}})
+        <div class="price">{{solution.cheapestPrice.requestCurrencyAmount}} {{solution.cheapestPrice.requestCurrency}}
+          {{#if (not-eq solution.cheapestPrice.currency solution.cheapestPrice.requestCurrency) }}
+            ({{solution.cheapestPrice.amount}} {{solution.cheapestPrice.currency}})
           {{/if}}
         </div>
-        <div class="price-country">{{cheapestPrice.country}}</div>
+        <div class="price-country">{{solution.cheapestPrice.country}}</div>
       </div>
       <div class="other-price">
-        {{#each pricesExceptCheapest as |price|}}
+        {{#each solution.pricesExceptCheapest as |price|}}
           <span class="price-country">{{price.country}}</span>
           <span class="price">
             {{price.requestCurrencyAmount}} {{price.requestCurrency}}
