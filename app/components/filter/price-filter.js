@@ -6,17 +6,23 @@ export default Component.extend({
   lowestPrice: undefined,
   biggestPrice: undefined,
 
-  priceRangeLowerBound: undefined,
-  priceRangeHigherBound: undefined,
+  initialRange: [],
+  range: {},
 
-
-  didInsertElement() {
+  didReceiveAttrs() {
     this._super(...arguments);
+    let lowerPrice = parseInt(this.get('lowestPrice'));
+    let higherPrice = parseInt(this.get('biggestPrice')) + 1;
+    this.set('initialRange', [lowerPrice, higherPrice]);
+    this.set('range', {min: [lowerPrice], max: [higherPrice]});
+  },
 
-    let lowerPrice = this.get('lowestPrice');
-    let higherPrice = this.get('biggestPrice');
-    this.set('priceRangeLowerBound', lowerPrice);
-    this.set('priceRangeHigherBound', higherPrice)
+  actions: {
+    changeAction(data) {
+      this.get('onPriceRangeLowerBoundChange')(data[0]);
+      this.get('onPriceRangeHigherBoundChange')(data[1]);
+    }
   }
 
-});
+})
+;

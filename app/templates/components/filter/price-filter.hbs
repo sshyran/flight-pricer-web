@@ -1,8 +1,6 @@
 {{#filter/filter-block blockTitle='Price'}}
-  Lower price {{priceRangeLowerBound}}: {{input type="range" value=(mut priceRangeLowerBound) min=lowestPrice
-                                                max=biggestPrice}}<br/>
-  Higher price {{priceRangeHigherBound}}: {{input type="range" value=(mut priceRangeHigherBound)
-                                                  min=priceRangeLowerBound
-                                                  max=biggestPrice}}
+  <p><br><br>
+    {{range-slider start=initialRange range=range on-change="changeAction" connect=true step=10 tooltips=true}}
+  </p>
 
 {{/filter/filter-block}}
