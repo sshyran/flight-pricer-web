@@ -2,14 +2,14 @@
 @import "flight-info";
 @import "filters";
 @import "bootstrap-override";
+@import 'search';
+
+$fa-font-path: "/fonts";
+@import "node_modules/components-font-awesome/scss/font-awesome.scss";
 
 body {
   background-color: #fafafa;
   min-height: 100vh;
-}
-
-.content {
-  padding: 3rem 1.5rem;
 }
 
 .search-flights-block {
@@ -22,9 +22,6 @@ body {
   -moz-appearance: none;
   appearance: none;
 }
-
-$fa-font-path: "/fonts";
-@import "node_modules/components-font-awesome/scss/font-awesome.scss";
 
 .results {
   margin-top: 1rem;

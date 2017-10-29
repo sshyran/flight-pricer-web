@@ -1,61 +1,71 @@
-<div class="form-row">
-  <div class="form-group col-md-4">
+<div class="row">
+  <div class="form-group col-sm-12">
     <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">From</label>
-      <div class="col-sm-9">
-        {{input value=departureAirport class="form-control"}}
+      <label for="" class="col-sm-2 col-form-label">From</label>
+      <div class="col-sm-10">
+        {{input value=departureAirport class="form-control" placeholder="Travel from"}}
       </div>
     </div>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-sm-12">
     <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">To</label>
-      <div class="col-md-9">
-        {{input value=arrivalAirport class="form-control"}}
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group col-md-4">
-    <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">Departure</label>
-      <div class="col-md-9">
-        {{pikaday-input value=departureDate options=(hash minDate=minDate) onSelection=(action (mut departureDate))
-                        class="form-control"}}
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group col-md-4">
-    <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">Adult</label>
-      <div class="col-md-9">
-        {{input type="number" class="form-control" value=numberOfAdult}}
-      </div>
-    </div>
-  </div>
-  <div class="form-group col-md-4">
-    <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">Children</label>
-      <div class="col-md-9">
-        {{input type="number" class="form-control" value=numberOfChildren}}
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group col-md-4">
-    <div class="form-group row">
-      <label for="" class="col-sm-3 col-form-label text-right">Class</label>
-      <div class="col-md-9">
-        {{select-dropdown content=travelClasses selectedValue=initialTravelClass action=(action (mut travelClass))}}
+      <label for="" class="col-sm-2 col-form-label">To</label>
+      <div class="col-md-10">
+        {{input value=arrivalAirport class="form-control" placeholder="Travel to"}}
       </div>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-10"></div>
-  <div class="col-2 align-self-end">
+
+  <div class="col-sm-12 col-md-6">
+    <div class="form-group col-sm-12">
+      <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label"><i class="fa fa-calendar"></i> </label>
+        <div class="col-md-10">
+          {{pikaday-input value=departureDate options=(hash minDate=minDate) onSelection=(action (mut departureDate))
+                          class="form-control"}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-12 col-md-6">
+
+    <div class="form-group col-sm-12">
+      <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label"><i class="fa fa-user"></i> </label>
+        <div class="col-sm-10">
+          {{input type="number" class="form-control" value=numberOfAdult min=1}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label"><i class="fa fa-child"></i> </label>
+        <div class="col-sm-10">
+          {{input type="number" class="form-control" value=numberOfChildren min=0}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6">
+
+    <div class="form-group col-sm-12">
+      <div class="form-group row">
+        <label for="" class="col-sm-3 col-form-label">Class</label>
+        <div class="col-md-9">
+          {{select-dropdown content=travelClasses selectedValue=initialTravelClass action=(action (mut travelClass))}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-9"></div>
+  <div class="col-sm-3">
     <button type="submit" {{action "search" }}class="btn btn-primary">Search</button>
 
   </div>

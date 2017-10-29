@@ -10,7 +10,7 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    if(!this.get('modelHookCalled')) {
+    if (!this.get('modelHookCalled')) {
       this.refresh();
     }
     controller.set('model', model);

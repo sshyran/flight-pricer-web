@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
+import moment from 'moment';
 
-/* global moment */
 export default Controller.extend({
 
   actions: {
