@@ -25,6 +25,10 @@ export default DS.Model.extend({
 
   pricesExceptCheapest: computed('orderedPrices.[]', function () {
     return this.get('orderedPrices').slice(1);
-  })
+  }),
+
+  originDepartureTimestamps: mapBy('slices','originDepartureTimestamp'),
+  destinationArrivalTimestamps: mapBy('slices','destinationArrivalTimestamp')
+
 
 });

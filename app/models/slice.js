@@ -19,7 +19,7 @@ export default DS.Model.extend({
     return this.get('segments.firstObject.originLocalDepartureTime');
   }),
 
-  originalDepartureTimestamp: computed('originLocalDepartureTime', function () {
+  originDepartureTimestamp: computed('originLocalDepartureTime', function () {
     let originLocalDepartureTime = this.get('originLocalDepartureTime');
     return moment(originLocalDepartureTime).unix();
   }),
@@ -60,7 +60,6 @@ export default DS.Model.extend({
         destinationLocalArrivalTime: segment.get('destinationLocalArrivalTime'),
         nextDepartureFromArrivalLocation: nextDepartureFromArrivalLocation,
         connectionDuration: segment.get('connectionDuration')
-
       };
 
       ret.push(friendlySegment);

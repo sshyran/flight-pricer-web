@@ -1,0 +1,22 @@
+{{#filter/filter-block blockTitle='Flight times'}}
+
+  {{#each slicesFilterCriteria as |filterCriteria index|}}
+    <div class="slice-time-filter">
+      {{#if (eq slicesFilterCriteria.length 2)}}
+        <span class="title">
+          {{#if (eq index 0)}}
+            Departure Flight
+          {{else}}
+            Return Flight
+          {{/if}}
+        </span>
+      {{/if}}
+
+      {{filter/time-slider title='Departure time' min=filterCriteria.departure.from max=filterCriteria.departure.to
+                           index=index type='departure' onRangeChange=(action 'changeAction') }}
+      {{filter/time-slider title='Arrival time' min=filterCriteria.arrival.from max=filterCriteria.arrival.to
+                           type='arrival' index=index onRangeChange=(action 'changeAction')}}
+    </div>
+  {{/each}}
+
+{{/filter/filter-block}}

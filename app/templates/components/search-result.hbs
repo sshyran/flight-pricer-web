@@ -42,6 +42,14 @@
 
     {{filter/airline-filter airlines=airlines}}
 
+    {{filter/time-filter
+      lowestDepartureTimes = lowestDepartureTimestamps
+      latestDepartureTimes = latestDepartureTimestamps
+      lowestArrivalTimes = lowestArrivalTimestamps
+      latestArrivalTimes = latestArrivalTimestamps
+      onChange = (action 'updateTimeFiltering')
+    }}
+
 
   </div>
 
