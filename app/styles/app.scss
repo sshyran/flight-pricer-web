@@ -1,6 +1,7 @@
 @import "ember-cli-bootstrap-4/bootstrap";
 @import "flight-info";
 @import "filters";
+@import "bootstrap-override";
 
 body {
   background-color: #fafafa;
@@ -62,7 +63,6 @@ footer {
   color: #3a4142;
   font-size: 12px;
 }
-
 
 .white-background {
   background-color: #fff;

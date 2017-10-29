@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import TravelClasses from '../utils/travel-class'
 
 export default Component.extend({
 
@@ -6,9 +7,21 @@ export default Component.extend({
   arrivalAirport: "",
   departureDate: new Date(),
   numberOfAdult: 1,
-  travelClass: "ECONOMY",
-  initialTravelClass: "ECONOMY",
+  numberOfChildren: 0,
   minDate: new Date(),
+
+  travelClass: undefined,
+  initialTravelClass: undefined,
+
+  travelClasses: undefined,
+
+  didInsertElement() {
+    this._super(...arguments);
+    let travelClasses = TravelClasses.create();
+    this.set('travelClasses', travelClasses.get('travelClasses'));
+    this.set('travelClass', travelClasses.economy().value);
+    this.set('initialTravelClass', travelClasses.economy().value);
+  },
 
   actions: {
     search() {
@@ -17,7 +30,8 @@ export default Component.extend({
         arrivalAirport: this.get('arrivalAirport'),
         departureDate: this.get('departureDate'),
         numberOfAdult: this.get('numberOfAdult'),
-        travelClass: this.get('travelClass')
+        travelClass: this.get('travelClass'),
+        numberOfChildren: this.get('numberOfChildren')
       });
     }
   }

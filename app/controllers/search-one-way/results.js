@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-  queryParams: ['class', 'numberOfAdult']
+  queryParams: ['class', 'numberOfAdult', 'numberOfChildren']
 
 });
