@@ -1,22 +1,27 @@
-import { alias } from '@ember/object/computed';
 import Component from '@ember/component';
+import TravelClasses from '../utils/travel-class'
 
 export default Component.extend({
   outWardDepartureAirport: "",
   outWardArrivalAirport: "",
+
   outWardDepartureDate: new Date(),
-  outWardNumberOfAdult: 1,
-  outWardTravelClass: "ECONOMY",
-  outWardInitialTravelClass: "ECONOMY",
+  returnDepartureDate: new Date(),
+
   outWardMinDate: new Date(),
 
-  returnDepartureAirport: alias('outWardArrivalAirport'),
-  returnArrivalAirport: alias('outWardDepartureAirport'),
-  returnDepartureDate: new Date(),
-  returnTravelClass: alias('outWardTravelClass'),
-  returnNumberOfAdult: alias('outWardNumberOfAdult'),
-  returnInitialTravelClass: alias('outWardInitialTravelClass'),
-  returnMinDate: alias('outWardDepartureDate'),
+  numberOfAdult: 1,
+  travelClass: undefined,
+  initialTravelClass: undefined,
+  travelClasses: [],
+
+  didInsertElement() {
+    this._super(...arguments);
+    let travelClasses = TravelClasses.create();
+    this.set('travelClasses', travelClasses.get('travelClasses'));
+    this.set('travelClass', travelClasses.economy().value);
+    this.set('initialTravelClass', travelClasses.economy().value);
+  },
 
   actions: {
     search() {

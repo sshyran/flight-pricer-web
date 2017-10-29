@@ -1,3 +1,4 @@
+@import 'bootstrap-material';
 @import "ember-cli-bootstrap-4/bootstrap";
 @import "flight-info";
 @import "filters";
@@ -8,12 +9,18 @@ $fa-font-path: "/fonts";
 @import "node_modules/components-font-awesome/scss/font-awesome.scss";
 
 body {
-  background-color: #fafafa;
-  min-height: 100vh;
+  background-color: $gray-50;
+  max-height: 100%;
+  overflow-y: hidden;
+}
+
+.result-block {
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .search-flights-block {
-  background-color: #FFF;
+  background-color: $white;
   padding: 1rem;
 }
 
@@ -21,6 +28,7 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  width: 100%;
 }
 
 .results {
@@ -34,10 +42,21 @@ body {
 }
 
 footer {
-  background-color: #fff;
-  color: #868e96 !important;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: inherit;
+  height: 60px;
+  line-height: 60px;
+  border-top: 1px solid $gray-100;
+  background-color: $gray-50;
+  border-right: 1px solid $gray-300;
+  margin: 0;
+  left: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 10px;
+  font-weight: lighter;
 }
 
 .result-header-row {
@@ -47,7 +66,7 @@ footer {
 
 .result-header-content-left {
   padding: 10px 18px 10px 18px;
-  background-color: #fff;
+  background-color: $white;
   text-transform: uppercase;
   font-weight: 600;
   color: #3a4142;
